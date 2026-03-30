@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Italian Dream | Roma Roleplay</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Montserrat:wght@300;600;800&display=swap" rel="stylesheet">
+    <style>
+        /* --- VARIABILI E COLORI PATRIOTTICI --- */
+        :root {
+            --verde: #008C45;
+            --bianco: #F4F5F0;
+            --rosso: #CD212A;
+            --oro: #D4AF37;
+            --discord: #5865F2;
+            --black: #050505;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--black);
+            color: var(--bianco);
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        /* --- NAVBAR ANIMATA --- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(0,0,0,0.85);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 2px solid var(--oro);
+        }
+
+        .nav-logo { height: 50px; transition: 0.3s; }
+        .nav-logo:hover { transform: scale(1.1); }
+
+        .nav-links a {
+            color: var(--bianco);
+            text-decoration: none;
+            margin-left: 30px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover { color: var(--verde); }
+
+        /* --- LOGICA PAGINE FULL SCREEN --- */
+        .page-section {
+            min-height: 100vh;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* --- SEZIONE 1: HOME (ROMA ANIMATA) --- */
+        .hero {
+            background: url('background-roma.jpg') no-repeat center center/cover;
+            background-attachment: fixed;
+            animation: romaZoom 20s infinite alternate ease-in-out;
+        }
+
+        @keyframes romaZoom {
+            from { transform: scale(1); }
+            to { transform: scale(1.1); }
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.9));
+        }
+
+        .hero-content {
+            z-index: 5;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .main-banner {
+            width: 90%;
+            max-width: 750px;
+            margin-bottom: 20px;
+            animation: float 4s ease-in-out infinite;
+            filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.4));
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* Linea Tricolore Sotto Banner */
+        .tricolore-line {
+            height: 4px;
+            width: 0;
+            background: linear-gradient(to right, var(--verde), var(--bianco), var(--rosso));
+            margin-bottom: 40px;
+            animation: growLine 2s forwards 0.5s;
+        }
+
+        @keyframes growLine {
+            to { width: 400px; }
+        }
+
+        /* --- BOTTONE DISCORD SPECIALE --- */
+        .btn-discord-special {
+            background: var(--discord);
+            color: white;
+            text-decoration: none;
+            padding: 20px 50px;
+            border-radius: 12px;
+            font-weight: 800;
+            font-size: 1.2rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            position: relative;
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 0 25px rgba(88, 101, 242, 0.5);
+            border: none;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        .btn-discord-special:hover {
+            transform: scale(1.1) translateY(-5px);
+            box-shadow: 0 0 50px rgba(88, 101, 242, 0.9);
+            filter: brightness(1.1);
+        }
+
+        /* Effetto Onda (Ripple) */
+        .btn-discord-special::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 12px;
+            animation: ripple 2s infinite;
+        }
+
+        @keyframes ripple {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(1.6); opacity: 0; }
+        }
+
+        /* --- SEZIONE 2: REGOLAMENTO --- */
+        .section-regolamento {
+            background: #0a0a0a;
+            border-top: 5px solid var(--verde);
+        }
+
+        .section-title {
+            font-family: 'Cinzel', serif;
+            font-size: 3.5rem;
+            color: var(--oro);
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+        }
+
+        /* --- SEZIONE 3: SHOP (VUOTA) --- */
+        .section-shop {
+            background: #050505;
+            border-top: 5px solid var(--rosso);
+        }
+
+        .placeholder-box {
+            border: 2px dashed #333;
+            padding: 50px;
+            margin-top: 30px;
+            border-radius: 20px;
+            color: #666;
+            font-style: italic;
+        }
+
+        /* --- INDICATORE SCROLL --- */
+        .scroll-down {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+            z-index: 5;
+            color: var(--oro);
+            font-size: 2rem;
+            text-decoration: none;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0) translateX(-50%);}
+            40% {transform: translateY(-10px) translateX(-50%);}
+            60% {transform: translateY(-5px) translateX(-50%);}
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <img src="logo.png" alt="Italian Dream Logo" class="nav-logo">
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#regolamento">Regolamento</a>
+            <a href="#shop">Sostieni</a>
+        </div>
+    </nav>
+
+    <section id="home" class="page-section hero">
+        <div class="overlay"></div>
+        <div class="hero-content">
+            <img src="bannerlogo.png" alt="Italian Dream Roma" class="main-banner">
+            <div class="tricolore-line"></div>
+            
+            <a href="https://discord.gg/3fjGnx6cCP" target="_blank" class="btn-discord-special">
+                <svg width="30" height="30" fill="white" viewBox="0 0 24 24"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037 19.736 19.736 0 0 0-4.885 1.515.069.069 0 0 0-.032.027C.533 9.048-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg>
+                ENTRA NELLA COMMUNITY
+            </a>
+        </div>
+        <a href="#regolamento" class="scroll-down">▼</a>
+    </section>
+
+    <section id="regolamento" class="page-section section-regolamento">
+        <h2 class="section-title">Regolamento</h2>
+        <div class="placeholder-box">
+            <p>Il codice civile e penale di Roma è in fase di approvazione dal Senato...</p>
+        </div>
+    </section>
+
+    <section id="shop" class="page-section section-shop">
+        <h2 class="section-title">Sostieni</h2>
+        <div class="placeholder-box">
+            <p>I pacchetti esclusivi verranno mostrati qui a breve.</p>
+        </div>
+        <footer style="margin-top: 50px; color: #444;">
+            <p>&copy; 2026 Italian Dream - La Capitale Roleplay</p>
+        </footer>
+    </section>
+
+</body>
+</html>
