@@ -6,7 +6,7 @@
     <title> AURELIS | ROLEPLAY </title>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Montserrat:wght@300;600;800&display=swap" rel="stylesheet">
     <style>
-        /* --- VARIABILI E COLORI PATRIOTTICI --- */
+        /* --- VARIABILI E COLORI --- */
         :root {
             --verde: #008C45;
             --bianco: #F4F5F0;
@@ -26,7 +26,7 @@
             overflow-x: hidden;
         }
 
-        /* --- SLIDESHOW ANIMATO --- */
+        /* --- SLIDESHOW ANIMATO FIXATO --- */
         .bg-slideshow {
             position: fixed;
             top: 0;
@@ -35,6 +35,7 @@
             height: 100%;
             z-index: -1;
             overflow: hidden;
+            background-color: var(--black);
         }
 
         .slide {
@@ -44,21 +45,19 @@
             background-size: cover;
             background-position: center;
             opacity: 0;
-            animation: slideFade 18s infinite ease-in-out;
+            /* Ciclo totale: 24s (6s per immagine) */
+            animation: slideFade 24s infinite ease-in-out;
         }
 
         .slide:nth-child(1) { background-image: url('roma1.png'); animation-delay: 0s; }
         .slide:nth-child(2) { background-image: url('roma2.png'); animation-delay: 6s; }
         .slide:nth-child(3) { background-image: url('roma3.png'); animation-delay: 12s; }
-        .slide:nth-child(1) { background-image: url('roma4.png'); animation-delay: 18s; }
-       
-   
+        .slide:nth-child(4) { background-image: url('roma4.png'); animation-delay: 18s; }
 
         @keyframes slideFade {
-            0% { opacity: 0; transform: scale(1); }
-            15% { opacity: 1; }
-            33% { opacity: 1; }
-            48% { opacity: 0; transform: scale(1.05); }
+            0%, 25% { opacity: 0; transform: scale(1); }
+            5%, 20% { opacity: 1; }
+            30% { opacity: 0; transform: scale(1.05); }
             100% { opacity: 0; }
         }
 
@@ -104,10 +103,7 @@
             overflow: hidden;
         }
 
-        /* --- SEZIONE 1: HOME --- */
-        .hero {
-            background: transparent; /* Sfondo gestito dallo slideshow */
-        }
+        .hero { background: transparent; }
 
         .overlay {
             position: absolute;
@@ -189,10 +185,16 @@
             100% { transform: scale(1.6); opacity: 0; }
         }
 
-        /* --- SEZIONE 2: REGOLAMENTO --- */
+        /* --- SEZIONI --- */
         .section-regolamento {
             background: #0a0a0a;
             border-top: 5px solid var(--verde);
+            z-index: 5;
+        }
+
+        .section-shop {
+            background: #050505;
+            border-top: 5px solid var(--rosso);
             z-index: 5;
         }
 
@@ -202,13 +204,7 @@
             color: var(--oro);
             margin-bottom: 20px;
             text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
-        }
-
-        /* --- SEZIONE 3: SHOP --- */
-        .section-shop {
-            background: #050505;
-            border-top: 5px solid var(--rosso);
-            z-index: 5;
+            text-align: center;
         }
 
         .placeholder-box {
@@ -218,6 +214,8 @@
             border-radius: 20px;
             color: #666;
             font-style: italic;
+            max-width: 800px;
+            text-align: center;
         }
 
         /* --- INDICATORE SCROLL --- */
@@ -243,6 +241,7 @@
 <body>
 
     <div class="bg-slideshow">
+        <div class="slide"></div>
         <div class="slide"></div>
         <div class="slide"></div>
         <div class="slide"></div>
@@ -283,8 +282,8 @@
         <div class="placeholder-box">
             <p>I pacchetti esclusivi verranno mostrati qui a breve.</p>
         </div>
-        <footer style="margin-top: 50px; color: #444;">
-            <p>&copy; 2026 AURELIS RP - L'ITALIA COME NON L'HAI MAI VISTA  </p>
+        <footer style="margin-top: 50px; color: #444; text-align: center;">
+            <p>&copy; 2026 AURELIS RP - L'ITALIA COME NON L'HAI MAI VISTA</p>
         </footer>
     </section>
 
